@@ -1,35 +1,36 @@
 package com.example;
 
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+
 
 class UserTest {
-
-    private static String login = "login";
-    private static String email = "@email.ru";
-
-    User user = new User(login, email);
-
-
+    private static String login;
+    private static String email;
+    static User user;
+    @BeforeAll
+    private static void initParam(){
+        System.out.println("Start tasting");
+        String login = "login";
+        String email = "@email.ru";
+        user = new User(login, email);
+    }
+    @AfterAll
+    private static void shouldDoAfterAll(){
+        System.out.println("Finish testing");
+    }
     @Test
-    private static void initParam() {
-        login = "login";
-        email = "@email.ru";
-
+    void shouldGetLogin() {
+    Assertions.assertEquals("login",user.getLogin());
     }
 
     @Test
-    void shouldGetUser() {
+    void shouldGetEmail() {
+        Assertions.assertEquals("@email.ru",user.getEmail());
     }
 
 
-    @Test
-    void getLogin() {
-    }
-
-    @Test
-    void getEmail() {
-    }
 }

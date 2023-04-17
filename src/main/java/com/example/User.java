@@ -6,28 +6,39 @@ public class User {
 
     public  User(String login, String email) {
         this.login = login;
+        this.email = email;
+    }
 
-        boolean inEmail;
-        if (inEmail = email.contains("@")&&email.contains(".")) {
-            System.out.println("email ok");
-            this.email = email;
-        } else {
-            System.out.println("Error");
+
+        public Object getLogin() {
+
+            if (login == login.toString()) {
+                System.out.println("login ok");
+                this.login = login;
+            } else {
+                System.out.println("Error");
+            }
+
+            return null;
         }
+        public Object getEmail() {
+            boolean inEmail;
+            if (inEmail = email.contains("@")&& email.contains(".") ) {
+                System.out.println("email ok");
+                this.email = "@email.ru";
+            } else {
+                System.out.println("Error");
+            }
+
+            return null;
+        }
+
+
+
+
     }
 
 
-    public void getUser(String login, String email){
-
-      }
 
 
-    public static String getLogin() {
-        return login;
-    }
 
-    public static String getEmail() {
-        return email;
-    }
-
-}
