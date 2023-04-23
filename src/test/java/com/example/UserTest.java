@@ -5,19 +5,17 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-
-
 class UserTest {
-    private static String login;
-    private static String email;
-    static User user;
+
+    private static User user1;
+    private static User user2;
+
 
     @BeforeAll
     public static void initParam() throws IllegalAccessException {
         System.out.println("Start tasting");
-        String login = "login";
-        String email = "myemail@gmail.com";
-        user = new User(login, email);
+        user1 = new User();
+        user2 = new User("login", "myemail@gmail.com");
     }
 
     @AfterAll
@@ -26,35 +24,30 @@ class UserTest {
     }
 
     @Test
-    void shouldGetLogin() {
-        String login = "login";
-        String email = "myemail@gmail.com";
-        User user = new User("login", "myemail@gmail.com");
-        Assertions.assertEquals("login", user.getLogin());
-        Assertions.assertEquals("myemail@gmail.com", user.getEmail());
+    public void shouldCreateWithParameters(){
+        Assertions.assertTrue(user2.getEmail() != null || user2.getLogin() != null);
     }
+   @Test
+    public void shouldCreateUserWithoutParameters(){
+       Assertions.assertTrue(user1.getEmail() == null && user1.getLogin() == null);
+
+   }
+   @Test
+    public void shouldCreateCorrectUser(){
+        Assertions.assertEquals(new User("login","myemail@gmail.com"),user2);
+   }
+   @Test
+    public void shouldNotValidUserParametersTrowException(){
+      Assertions.assertThrows (IllegalArgumentException.class, () -> new User("login", "myemail@gmail.com"));
+   }
 
 
-    @Test
-    void shouldGetUser() {
-        String login = "login";
-        String email = "myemail@gmail.com";
-        User user = new User("login", "myemail@gmail.com");
 
-        Assertions.assertEquals("login", user.getLogin());
-        Assertions.assertEquals("myemail@gmail.com", user.getEmail());
-    }
 
-    @Test
-    void shouldArgumentUser(){
-        Assertions.assertEquals(null,user.argumentUser(login,email));
-    }
-    @Test()
-    void shouldExceptionUser()throws IllegalArgumentException {
-        String login = email;
-        Assertions.assertThrows(IllegalArgumentException.class, ()->user.argumentUser("login",  "email"));
+
+
+
+
 
 
     }
-
-}
