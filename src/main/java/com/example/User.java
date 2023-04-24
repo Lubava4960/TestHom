@@ -24,6 +24,9 @@ public class User {
     private void validateUserParameters(String login, String email) {
         validateLogin(login);
         validateEmail(email);
+        if(login.equals(email)){
+            throw new IllegalArgumentException("Email is the same as login");
+        }
     }
 
 

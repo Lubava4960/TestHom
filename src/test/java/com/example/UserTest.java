@@ -38,7 +38,7 @@ class UserTest {
    }
    @Test
     public void shouldNotValidUserParametersTrowException(){
-      Assertions.assertThrows (IllegalArgumentException.class, () -> new User("login", "myemail@gmail.com"));
+      Assertions.assertThrows (IllegalArgumentException.class, () -> new User("login", "myemailgmail.com"));
    }
 
 
