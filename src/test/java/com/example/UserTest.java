@@ -15,7 +15,7 @@ class UserTest {
     public static void initParam() throws IllegalAccessException {
         System.out.println("Start tasting");
         user1 = new User();
-        user2 = new User("login", "myemail@gmail.com");
+        user2 = new User("login", "myemail@gmail.com","Name");
     }
 
     @AfterAll
@@ -34,11 +34,11 @@ class UserTest {
    }
    @Test
     public void shouldCreateCorrectUser(){
-        Assertions.assertEquals(new User("login","myemail@gmail.com"),user2);
+        Assertions.assertEquals(new User("login","myemail@gmail.com","Name"),user2);
    }
    @Test
     public void shouldNotValidUserParametersTrowException(){
-      Assertions.assertThrows (IllegalArgumentException.class, () -> new User("login", "myemailgmail.com"));
+      Assertions.assertThrows (IllegalArgumentException.class, () -> new User("login", "myemailgmail.com","Name"));
    }
 
 
